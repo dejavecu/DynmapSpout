@@ -113,6 +113,7 @@ public class SpoutWorld extends DynmapWorld {
     public MapChunkCache getChunkCache(List<DynmapChunk> chunks) {
         SpoutMapChunkCache c = new SpoutMapChunkCache();
         c.setChunks(this, chunks);
+        c.setVisibilityParameters((DynmapWorld) this);
         return c;
     }
     
