@@ -42,26 +42,15 @@ import org.spout.vanilla.api.material.VanillaMaterial;
  */
 public class SpoutMapChunkCache extends CoreMapChunkCache implements MapChunkCache {
     private World w;
-    private DynmapWorld dw;
-    private ListIterator<DynmapChunk> iterator;
+
     private boolean isempty = true;
-    private int x_min, x_max, y_min, y_max, z_min, z_max;
-    private int x_dim, xz_dim;
+
+    private int xz_dim;
     private ChunkSnapshot[] snaparray; /* Index = (x-x_min) + ((z-z_min)*x_dim) + ((y-ymin)*xz_dom) */
-    private List<DynmapChunk> chunks;
     private ChunkSnapshot EMPTY;
     
-    private int chunks_read;    /* Number of chunks actually loaded */
-    private int chunks_attempted;   /* Number of chunks attempted to load */
-    private long total_loadtime;    /* Total time loading chunks, in nanoseconds */
-    
-    private long exceptions;
-    
     private static int[] blkidmap = null;    
-    
-    private static final BlockStep unstep[] = { BlockStep.X_MINUS, BlockStep.Y_MINUS, BlockStep.Z_MINUS,
-        BlockStep.X_PLUS, BlockStep.Y_PLUS, BlockStep.Z_PLUS };
-    
+
     /**
      * Iterator for traversing map chunk cache (base is for non-snapshot)
      */
